@@ -173,7 +173,7 @@ class bib(imdb):
         format.
         """
         filename = os.path.join(self._data_path, 'Annotations', self._label, 
-                                    index + _annotation_ext)
+                                    index + self._annotation_ext)
         tree = ET.parse(filename)
         objs = tree.findall('object')
         if not self.config['use_diff']:
