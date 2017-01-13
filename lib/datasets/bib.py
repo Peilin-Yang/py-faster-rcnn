@@ -35,7 +35,7 @@ class bib(imdb):
         # Default to roidb handler
         self._roidb_handler = self.selective_search_roidb
         self._salt = str(uuid.uuid4())
-        self._comp_id = 'comp4'
+        self._comp_id = 'bib_'+self._label
 
         # PASCAL specific config options
         self.config = {'cleanup'     : True,
@@ -71,7 +71,7 @@ class bib(imdb):
         # Example path to image set file:
         # self._bib_path + /500X500Gray/JPEGImages/trainging/
         image_index = [fn.split('.')[0] for fn in os.listdir(os.path.join(
-                self._data_path, 'JPEGImages', self._image_set))]
+                self._data_path, 'Annotations', self._image_set))]
         return image_index
 
     def _get_default_path(self):
@@ -125,12 +125,7 @@ class bib(imdb):
         return roidb
 
     def rpn_roidb(self):
-        if int(self._year) == 2007 or self._image_set != 'test':
-            gt_roidb = self.gt_roidb()
-            rpn_roidb = self._load_rpn_roidb(gt_roidb)
-            roidb = imdb.merge_roidbs(gt_roidb, rpn_roidb)
-        else:
-            roidb = self._load_rpn_roidb(None)
+        roidb = self._load_rpn_roidb(None)
 
         return roidb
 
@@ -171,14 +166,6 @@ class bib(imdb):
                                     index + self._annotation_ext)
         tree = ET.parse(filename)
         objs = tree.findall('object')
-        if not self.config['use_diff']:
-            # Exclude the samples labeled as difficult
-            non_diff_objs = [
-                obj for obj in objs if int(obj.find('difficult').text) == 0]
-            # if len(non_diff_objs) != len(objs):
-            #     print 'Removed {} difficult objects'.format(
-            #         len(objs) - len(non_diff_objs))
-            objs = non_diff_objs
         num_objs = len(objs)
 
         boxes = np.zeros((num_objs, 4), dtype=np.uint16)
