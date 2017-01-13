@@ -44,8 +44,6 @@ class bib(imdb):
                        'rpn_file'    : None,
                        'min_size'    : 2}
 
-        assert os.path.exists(self.bib_path), \
-                'Bib path does not exist: {}'.format(self.bib_path)
         assert os.path.exists(self._data_path), \
                 'Path does not exist: {}'.format(self._data_path)
 
@@ -79,7 +77,7 @@ class bib(imdb):
         """
         Return the default path where PASCAL VOC is expected to be installed.
         """
-        return os.path.join(cfg.DATA_DIR, 'bib')
+        return os.path.join(cfg.DATA_DIR, 'bib', self._label)
 
     def gt_roidb(self):
         """
