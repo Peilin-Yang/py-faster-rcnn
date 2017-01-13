@@ -9,9 +9,16 @@
 
 __sets = {}
 
+from datasets.bib import bib
 from datasets.pascal_voc import pascal_voc
 from datasets.coco import coco
 import numpy as np
+
+# Set up bib_label
+for label in ['500X500Gray']:
+    for split in ['training', 'testing']:
+        name = 'bib_{}_{}'.format(label, split)
+        __sets[name] = (lambda split=split, year=label: bib(split, label))
 
 # Set up voc_<year>_<split> using selective search "fast" mode
 for year in ['2007', '2012']:

@@ -23,6 +23,12 @@ EXTRA_ARGS=${array[@]:3:$len}
 EXTRA_ARGS_SLUG=${EXTRA_ARGS// /_}
 
 case $DATASET in
+  bib)
+    TRAIN_IMDB="bib_500X500Gray_training"
+    TEST_IMDB="bib_500X500Gray_testing"
+    PT_DIR="bib"
+    ITERS=70000
+    ;;
   pascal_voc)
     TRAIN_IMDB="voc_2007_trainval"
     TEST_IMDB="voc_2007_test"
@@ -60,9 +66,9 @@ set +x
 NET_FINAL=`grep -B 1 "done solving" ${LOG} | grep "Wrote snapshot" | awk '{print $4}'`
 set -x
 
-time ./tools/test_net.py --gpu ${GPU_ID} \
-  --def models/${PT_DIR}/${NET}/faster_rcnn_end2end/test.prototxt \
-  --net ${NET_FINAL} \
-  --imdb ${TEST_IMDB} \
-  --cfg experiments/cfgs/faster_rcnn_end2end.yml \
-  ${EXTRA_ARGS}
+# time ./tools/test_net.py --gpu ${GPU_ID} \
+#   --def models/${PT_DIR}/${NET}/faster_rcnn_end2end/test.prototxt \
+#   --net ${NET_FINAL} \
+#   --imdb ${TEST_IMDB} \
+#   --cfg experiments/cfgs/faster_rcnn_end2end.yml \
+#   ${EXTRA_ARGS}
