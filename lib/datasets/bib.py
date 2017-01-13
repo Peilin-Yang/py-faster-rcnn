@@ -162,7 +162,7 @@ class bib(imdb):
         Load image and bounding boxes info from XML file in the PASCAL VOC
         format.
         """
-        filename = os.path.join(self._data_path, 'Annotations', self._label, 
+        filename = os.path.join(self._data_path, 'Annotations', self._image_set, 
                                     index + self._annotation_ext)
         tree = ET.parse(filename)
         objs = tree.findall('object')
