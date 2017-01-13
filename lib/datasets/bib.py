@@ -79,7 +79,7 @@ class bib(imdb):
         """
         Return the default path where PASCAL VOC is expected to be installed.
         """
-        return os.path.join(cfg.DATA_DIR, self._label)
+        return os.path.join(cfg.DATA_DIR, 'bib')
 
     def gt_roidb(self):
         """
