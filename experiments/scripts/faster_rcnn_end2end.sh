@@ -27,7 +27,7 @@ case $DATASET in
     TRAIN_IMDB="bib_500X500Gray_training"
     TEST_IMDB="bib_500X500Gray_testing"
     PT_DIR="bib"
-    ITERS=700
+    ITERS=100
     ;;
   pascal_voc)
     TRAIN_IMDB="voc_2007_trainval"
