@@ -74,7 +74,7 @@ class bib(imdb):
         image_index = [fn.split('.')[0] for fn in os.listdir(os.path.join(
                 self._data_path, 'Annotations' if self._image_set == 'testing' else 'JPEGImages', 
                 self._image_set))]
-        print os.path.join(
+        print self._image_set, os.path.join(
                 self._data_path, 'Annotations' if self._image_set == 'testing' else 'JPEGImages', 
                 self._image_set)
         return image_index
