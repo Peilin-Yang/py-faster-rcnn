@@ -18,7 +18,7 @@ import numpy as np
 for label in ['500X500Gray']:
     for split in ['training', 'testing']:
         name = 'bib_{}_{}'.format(label, split)
-        __sets[name] = (lambda split=split, year=label: bib(split, label))
+        __sets[name] = (lambda label=label, split=split: bib(label, split))
 
 # Set up voc_<year>_<split> using selective search "fast" mode
 for year in ['2007', '2012']:

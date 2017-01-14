@@ -20,7 +20,7 @@ from voc_eval import voc_eval
 from fast_rcnn.config import cfg
 
 class bib(imdb):
-    def __init__(self, image_set, label, bib_path=None):
+    def __init__(self, label, image_set, bib_path=None):
         imdb.__init__(self, 'bib_' + label + '_' + image_set)
         self._label = label
         self._image_set = image_set
@@ -72,7 +72,7 @@ class bib(imdb):
         # self._bib_path + /500X500Gray/JPEGImages/training/
         print self._label
         image_index = [fn.split('.')[0] for fn in os.listdir(os.path.join(
-                self._data_path, 'Annotations' if self._label == 'testing' else 'JPEGImages', 
+                self._data_path, 'Annotations' if self._image_set == 'testing' else 'JPEGImages', 
                 self._image_set))]
         return image_index
 
