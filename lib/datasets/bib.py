@@ -69,7 +69,8 @@ class bib(imdb):
         Load the indexes listed in this dataset's image set file.
         """
         # Example path to image set file:
-        # self._bib_path + /500X500Gray/JPEGImages/trainging/
+        # self._bib_path + /500X500Gray/JPEGImages/training/
+        print self._label
         image_index = [fn.split('.')[0] for fn in os.listdir(os.path.join(
                 self._data_path, 'Annotations' if self._label == 'testing' else 'JPEGImages', 
                 self._image_set))]
