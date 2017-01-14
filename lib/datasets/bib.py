@@ -37,8 +37,8 @@ class bib(imdb):
         self._salt = str(uuid.uuid4())
         self._comp_id = 'bib_'+self._label
 
-        # PASCAL specific config options
-        self.config = {'cleanup'     : True,
+        # Bib specific config options
+        self.config = {'cleanup'     : False,
                        'use_salt'    : True,
                        'use_diff'    : False,
                        'matlab_eval' : False,
@@ -250,7 +250,7 @@ class bib(imdb):
         for i, cls in enumerate(self._classes):
             if cls == '__background__':
                 continue
-            filename = self._get_voc_results_file_template().format(cls)
+            filename = self._get_bib_results_file_template().format(cls)
             rec, prec, ap = voc_eval(
                 filename, annopath, imagesetfile, cls, cachedir, ovthresh=0.5,
                 use_07_metric=use_07_metric)
@@ -297,7 +297,7 @@ class bib(imdb):
             for cls in self._classes:
                 if cls == '__background__':
                     continue
-                filename = self._get_voc_results_file_template().format(cls)
+                filename = self._get_bib_results_file_template().format(cls)
                 os.remove(filename)
 
     def competition_mode(self, on):
