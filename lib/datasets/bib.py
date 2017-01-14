@@ -71,7 +71,8 @@ class bib(imdb):
         # Example path to image set file:
         # self._bib_path + /500X500Gray/JPEGImages/trainging/
         image_index = [fn.split('.')[0] for fn in os.listdir(os.path.join(
-                self._data_path, 'Annotations', self._image_set))]
+                self._data_path, 'Annotations' if self._label == 'testing' else 'JPEGImages', 
+                self._image_set))]
         return image_index
 
     def _get_default_path(self):
