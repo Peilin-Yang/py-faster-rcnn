@@ -299,7 +299,7 @@ class bib(imdb):
                 if cls == '__background__':
                     continue
                 filename = self._get_bib_results_file_template().format(cls)
-                os.remove(filename)
+                #os.remove(filename)
 
     def competition_mode(self, on):
         if on:
