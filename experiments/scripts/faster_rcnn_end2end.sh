@@ -24,8 +24,8 @@ EXTRA_ARGS_SLUG=${EXTRA_ARGS// /_}
 
 case $DATASET in
   bib)
-    TRAIN_IMDB="bib_500X500Gray_training"
-    TEST_IMDB="bib_500X500Gray_testing"
+    TRAIN_IMDB="bib_500X500_training"
+    TEST_IMDB="bib_500X500_testing"
     PT_DIR="bib"
     ITERS=70000
     ;;

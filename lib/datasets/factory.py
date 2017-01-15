@@ -15,7 +15,7 @@ from datasets.coco import coco
 import numpy as np
 
 # Set up bib_label
-for label in ['500X500Gray']:
+for label in ['500X500', '500X500Gray']:
     for split in ['training', 'testing']:
         name = 'bib_{}_{}'.format(label, split)
         __sets[name] = (lambda label=label, split=split: bib(label, split))
