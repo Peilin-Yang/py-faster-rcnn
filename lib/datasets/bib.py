@@ -72,8 +72,7 @@ class bib(imdb):
         # Example path to image set file:
         # self._bib_path + /500X500Gray/JPEGImages/training/
         image_index = [fn.split('.')[0] for fn in os.listdir(os.path.join(
-                self._data_path, 'Annotations' if self._image_set == 'training' else 'JPEGImages', 
-                self._image_set))]
+                self._data_path, 'Annotations', self._image_set))]
         return image_index
 
     def _get_default_path(self):
@@ -292,7 +291,7 @@ class bib(imdb):
 
     def evaluate_detections(self, all_boxes, output_dir):
         self._write_bib_results_file(all_boxes)
-        #self._do_python_eval(output_dir)
+        self._do_python_eval(output_dir)
         if self.config['matlab_eval']:
             self._do_matlab_eval(output_dir)
         if self.config['cleanup']:
