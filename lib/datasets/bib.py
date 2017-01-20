@@ -246,7 +246,7 @@ class bib(imdb):
                 continue
             filename = self._get_bib_results_file_template().format(cls)
             rec, prec, ap = voc_eval(
-                filename, annopath, imagesetfile, cls, cachedir, ovthresh=0.5,
+                filename, annopath, None, cls, cachedir, ovthresh=0.5,
                 use_07_metric=True, has_imagenames=True, imagenames=imagenames)
             aps += [ap]
             print('AP for {} = {:.4f}'.format(cls, ap))
