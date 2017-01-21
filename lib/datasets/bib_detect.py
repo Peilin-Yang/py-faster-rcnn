@@ -60,11 +60,9 @@ class bib_detect(imdb):
                 for _type in mapping: # training or testing
                     for fn in mapping[_type]:
                         excluded.add(os.path.basename(mapping[_type][fn]))
-        print excluded
         image_index = []
         for root, dirs, files in os.walk(self._source_folder):
             for name in files:
                 if name not in excluded:
                     image_index.append(name.split('.')[0])
         return image_index
-        
