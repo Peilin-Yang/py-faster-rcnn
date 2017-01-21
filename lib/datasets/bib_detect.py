@@ -6,6 +6,7 @@
 # --------------------------------------------------------
 
 import os
+import json
 from datasets.imdb import imdb
 from fast_rcnn.config import cfg
 
@@ -66,9 +67,4 @@ class bib_detect(imdb):
                 if name not in excluded:
                     image_index.append(name.split('.')[0])
         return image_index
-
-    def _get_default_path(self):
-        """
-        Return the default path where PASCAL VOC is expected to be installed.
-        """
-        return os.path.join(cfg.DATA_DIR, 'bib_detect', self._label)
+        
