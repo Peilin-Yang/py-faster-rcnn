@@ -88,4 +88,4 @@ if __name__ == '__main__':
     if not cfg.TEST.HAS_RPN:
         imdb.set_proposal_method(cfg.TEST.PROPOSAL_METHOD)
 
-    detect(net, imdb, output_fn, max_per_image=args.max_per_image, vis=args.vis)
+    detect(net, imdb, args.output_fn, max_per_image=args.max_per_image)
