@@ -283,6 +283,19 @@ def detect(net, imdb, output_fn, max_per_image=100, thresh=0.05):
               .format(i + 1, num_images, _t['im_detect'].average_time,
                       _t['misc'].average_time)
 
-    with open(output_fn, 'wb') as f:
-        cPickle.dump(all_boxes, f, cPickle.HIGHEST_PROTOCOL)
+    for cls_ind, cls in enumerate(imdb.classes):
+            if cls == '__background__':
+                continue        
+            print 'Writing detection results file for class {}: {}'.format(cls, output_fn)
+            with open(output_fn, 'wt') as f:
+                for im_ind, index in enumerate(imdb.image_index):
+                    dets = all_boxes[cls_ind][im_ind]
+                    if dets == []:
+                        continue
+                    # the VOCdevkit expects 1-based indices
+                    for k in xrange(dets.shape[0]):
+                        f.write('{:s} {:.3f} {:.1f} {:.1f} {:.1f} {:.1f}\n'.
+                                format(index, dets[k, -1],
+                                       dets[k, 0] + 1, dets[k, 1] + 1,
+                                       dets[k, 2] + 1, dets[k, 3] + 1))
 

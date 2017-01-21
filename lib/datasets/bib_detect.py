@@ -62,6 +62,3 @@ class bib_detect(imdb):
         Return the default path where PASCAL VOC is expected to be installed.
         """
         return os.path.join(cfg.DATA_DIR, 'bib_detect', self._label)
-
-    def evaluate_detections(self, all_boxes, output_dir):
-        pass
