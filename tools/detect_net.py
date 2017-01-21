@@ -10,7 +10,7 @@
 """Test a Fast R-CNN network on an image database."""
 
 import _init_paths
-from dataset.bib_detect import bib_detect
+from datasets.bib_detect import bib_detect
 from fast_rcnn.detect import detect
 from fast_rcnn.config import cfg, cfg_from_file, cfg_from_list
 import caffe
