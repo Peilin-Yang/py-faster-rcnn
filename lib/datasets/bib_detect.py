@@ -13,6 +13,7 @@ class bib_detect(imdb):
     def __init__(self, source_folder, exclude_mappings):
         imdb.__init__(self, 'bib_detect_' + os.path.basename(source_folder))
         self._source_folder = source_folder
+        self._exclude_mappings = exclude_mappings
         self._classes = ('__background__', # always index 0
                          'bib')
         self._image_ext = '.jpg'
@@ -51,10 +52,19 @@ class bib_detect(imdb):
         """
         List all files in the folder
         """
+        excluded = set()
+        if self._exclude_mappings:
+            with open(self._exclude_mappings) as f:
+                mapping = json.load(f)
+                for _type in mapping: # training or testing
+                    for fn in mapping[_type]:
+                        excluded.add(os.path.basename(mapping[_type][fn]))
+        print excluded
         image_index = []
         for root, dirs, files in os.walk(self._source_folder):
             for name in files:
-                image_index.append(name.split('.')[0])
+                if name not in excluded:
+                    image_index.append(name.split('.')[0])
         return image_index
 
     def _get_default_path(self):
