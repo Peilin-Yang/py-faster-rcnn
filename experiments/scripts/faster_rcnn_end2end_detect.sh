@@ -5,5 +5,5 @@ time ./tools/detect_net.py --gpu 0 \
   --net $1 \
   --cfg experiments/cfgs/faster_rcnn_end2end.yml \
   --input $2 \
-  --output $3 \
-  --excludes $4 
+  --excludes $3 \
+  --output $4
