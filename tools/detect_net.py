@@ -56,6 +56,7 @@ def parse_args():
         parser.print_help()
         sys.exit(1)
 
+    print sys.argv
     args = parser.parse_args()
     return args
 
