@@ -63,6 +63,6 @@ class bib_detect(imdb):
         image_index = []
         for root, dirs, files in os.walk(self._source_folder):
             for name in files:
-                if name not in excluded:
-                    image_index.append(name.split('.')[0])
+                if name not in excluded and name.split('.')[0].strip():
+                    image_index.append(name.split('.')[0].strip())
         return image_index
