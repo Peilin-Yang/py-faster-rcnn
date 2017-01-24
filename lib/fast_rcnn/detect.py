@@ -251,7 +251,11 @@ def detect(net, imdb, output_fn, max_per_image=100, thresh=0.05):
             # ground truth.
             box_proposals = roidb[i]['boxes'][roidb[i]['gt_classes'] == 0]
 
-        im = cv2.imread(imdb.image_path_at(i))
+        im_path = imdb.image_path_at(i)
+        if not im_path:
+            print('Image does not exists ... continue...')
+            continue
+        im = cv2.imread()
         _t['im_detect'].tic()
         scores, boxes = im_detect(net, im, box_proposals)
         _t['im_detect'].toc()

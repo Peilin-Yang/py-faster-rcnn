@@ -45,9 +45,9 @@ class bib_detect(imdb):
         image_path = os.path.join(self._source_folder, 
                 label,
                 index + self._image_ext)
-        assert os.path.exists(image_path), \
-                'Path does not exist: {}'.format(image_path)
-        return image_path
+        if os.path.exists(image_path):
+            return image_path
+        return None
 
     def _load_image_set_index(self):
         """
