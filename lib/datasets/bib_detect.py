@@ -47,6 +47,7 @@ class bib_detect(imdb):
                 index + self._image_ext)
         if os.path.exists(image_path):
             return image_path
+        print('image %s does exist....' % image_path)
         return None
 
     def _load_image_set_index(self):

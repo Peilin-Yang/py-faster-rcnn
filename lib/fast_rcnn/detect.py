@@ -253,9 +253,8 @@ def detect(net, imdb, output_fn, max_per_image=100, thresh=0.05):
 
         im_path = imdb.image_path_at(i)
         if not im_path:
-            print('Image does not exists ... continue...')
             continue
-        im = cv2.imread()
+        im = cv2.imread(im_path)
         _t['im_detect'].tic()
         scores, boxes = im_detect(net, im, box_proposals)
         _t['im_detect'].toc()
