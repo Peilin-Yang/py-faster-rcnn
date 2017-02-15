@@ -1,4 +1,5 @@
 import os,sys
+import re
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -17,6 +18,24 @@ def read_log_file_with(fn, keywords=[]):
                 r.append(line)
     return r
 
+def parse_loss_lines(lines):
+    r = [[], []]
+    c = re.compile(r'Iteration (.*)?, loss = (.*)?')
+    for line in lines:
+        m = c.search(line)
+        if m:
+            r[0].append(int(m.group(1)))
+            r[1].append(float(m.group(2)))
+    return r
+
+def vis_loss(data):
+    x = data[0]
+    y = data[1]
+    fig, ax = plt.subplots(1, 1)
+    ax.plot(x, y, 'b-', label='loss over iteration')
+    ax.legend(loc='best', frameon=True)
+    plt.show()
+
 
 if __name__ == '__main__':
 
@@ -31,4 +50,5 @@ if __name__ == '__main__':
 
     if args.vis_loss:
         lines = read_log_file_with(args.log_file, ['Iteration', 'loss'])
-        print lines
+        parsed = parse_loss_lines(lines)
+        vis_loss(parsed)
