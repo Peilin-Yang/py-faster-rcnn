@@ -116,11 +116,10 @@ def _get_bbox_regression_labels(bbox_target_data, num_classes):
         bbox_inside_weights (ndarray): N x 4K blob of loss weights
     """
 
-    clss = bbox_target_data[:, 0]
+    clss = bbox_target_data[:, 0].astype(np.int)
     bbox_targets = np.zeros((clss.size, 4 * num_classes), dtype=np.float32)
     bbox_inside_weights = np.zeros(bbox_targets.shape, dtype=np.float32)
     inds = np.where(clss > 0)[0]
-    print(inds, clss)
     for ind in inds:
         cls = clss[ind]
         start = 4 * cls
