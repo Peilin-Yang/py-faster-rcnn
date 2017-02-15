@@ -24,7 +24,7 @@ if __name__ == '__main__':
     parser.add_argument('--log_file', dest='log_file', 
             help='The path to log file',
             required=True)
-    parser.add_argument('--vis_loss', dest='vis_loss', 
+    parser.add_argument('--vis_loss', action='store_true', 
             help='Vis the loss along time line')
 
     args = parser.parse_args()
