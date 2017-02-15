@@ -58,11 +58,11 @@ class bib(imdb):
         """
         Construct an image path from the image's "index" identifier.
         """
-        if self.image_set == 'training':
+        if self._image_set == 'training':
             image_path = os.path.join(self._data_path, 
                     'JPEGImages',
                     self._image_set, index.split('-')[0], index + self._image_ext)
-        elif self.image_set == 'testing':
+        elif self._image_set == 'testing':
             image_path = os.path.join(self._data_path, 
                     'JPEGImages',
                     self._image_set, index + self._image_ext)
