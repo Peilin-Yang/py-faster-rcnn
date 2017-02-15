@@ -27,6 +27,8 @@ if __name__ == '__main__':
     parser.add_argument('--vis_loss', dest='vis_loss', 
             help='Vis the loss along time line')
 
+    args = parser.parse_args()
+
     if args.vis_loss:
         lines = read_log_file_with(args.log_file, ['Iteration', 'loss'])
         print lines
