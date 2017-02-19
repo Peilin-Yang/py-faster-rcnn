@@ -41,7 +41,7 @@ def parse_args():
                         required=True, type=str)
     parser.add_argument('--excludes', dest='exclude_mapping',
                         help='mapping file .json that are used for train/test and should be excluded from detection',
-                        default=None, type=str)
+                        required=False, default=None, type=str)
     parser.add_argument('--output', dest='output_fn',
                         help='path to the output file',
                         required=True, type=str)
