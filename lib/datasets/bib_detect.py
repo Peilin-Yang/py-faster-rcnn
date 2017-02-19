@@ -42,10 +42,9 @@ class bib_detect(imdb):
         Construct an image path from the image's "index" identifier.
         """
         label = index.split('-')[0]
-        try:
-            image_path = os.path.join(self._source_folder, 
-                    label,
-                    index + self._image_ext)
+        image_path = os.path.join(self._source_folder, 
+                label,
+                index + self._image_ext)
         if os.path.exists(image_path):
             return image_path
 
