@@ -61,7 +61,7 @@ class bib_detect(imdb):
         List all files in the folder
         """
         excluded = set()
-        if self._exclude_mappings:
+        if self._exclude_mappings and os.path.exists(self._exclude_mappings):
             with open(self._exclude_mappings) as f:
                 mapping = json.load(f)
                 for _type in mapping: # training or testing
