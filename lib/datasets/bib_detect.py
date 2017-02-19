@@ -46,11 +46,14 @@ class bib_detect(imdb):
             image_path = os.path.join(self._source_folder, 
                     label,
                     index + self._image_ext)
-        except:
-            image_path = os.path.join(self._source_folder, 
-                    index + self._image_ext)
         if os.path.exists(image_path):
             return image_path
+
+        image_path = os.path.join(self._source_folder, 
+                index + self._image_ext)
+        if os.path.exists(image_path):
+            return image_path
+        
         print('image %s does exist....' % image_path)
         return None
 
